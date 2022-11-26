@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/jpg" href="{% static 'img/icon.jpg' %}">
+    <title>furniture assembly</title>
+</head>
+
+<body>
+    <header class="header center">
+        <nav class="nav">
+            <ul class="menu">
+                {% for li in navigation %}
+                <li><a class="menu__link" href="#{{li.href}}">{{ li.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+    <main id="main" class="main">
+        <div class="main__content" >
+            {% for title in main %}
+            <h1>{{title.title}}</h1>
+            {% endfor %}
+        </div>
+    </main>
+    <section id="galary" class="galary wrap">
+        <div class="galary__content ">
+            {% for image in galary%}
+            <div class="galary__img" style="background-image: url('{{ image.image.url }}')"></div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="advantages wrap">
+        <div class="container">
+            {% for adv in advantages %}
+            <h1 class="advantages__head">{{adv.title}}</h1>
+            <p class="advantages__descriptions">{{adv.descriotion}}</p>
+            {% endfor %}
+            <div class="advantages__body">
+                {% for div in advantagebody %}
+                <div class="advantages__item">
+                    <img class="advantages__img" src="{{div.image.url}}" alt="">
+                    <h3 class="advantages__title">{{div.title }}</h3>
+                    <p class="advantages__info">{{div.body}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="introduction" class="introduction">
+        {% for part in introduction %}
+        <div class="introduction__content">
+            <h4 class="introduction__subtitle">{{part.subtitle}}</h4>
+            <h1 class="introduction__title">{{part.title}}</h1>
+            <img class="introduction__img" src="{{part.image.url}}" alt="">
+            <p class="introduction__info">{{part.body}}</p>
+        </div>
+           {% endfor %}
+    </section>
+    <footer id="footer" class="footer">
+        {% for part in footer %}
+        <div class="footer__content">
+            <div class="footer__tel">
+                <span>{{ part.phone_number }}</span>
+            </div>
+            <div class="footer__sotial-media">
+                <a class="footer__contact footer__contact_tg" href="{{part.telegram_link}}"></a>
+                <a class="footer__contact footer__contact_vb " href="{{part.contact}}"></a>
+                <a class="footer__contact footer__contact_wt" href="{{part.viber_contact}}"></a>
+            </div>
+        </div>
+        {% endfor %}
+    </footer>
+</body>
+
+</html>
